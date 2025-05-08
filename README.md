@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AfroBall Connect
+
+Welcome to AfroBall Connect, the premier global destination for streaming African football! This project is the landing page for the upcoming service.
+
+## Project Overview
+
+This Next.js application serves as the initial landing page for AfroBall Connect. It aims to introduce the brand, showcase upcoming features, and allow interested users and partners to sign up for a mailing list.
+
+## Tech Stack
+
+*   **Framework:** Next.js (with App Router)
+*   **UI Components:** shadcn/ui
+*   **Styling:** Tailwind CSS
+*   **Backend (Mailing List):** Supabase
+*   **Deployment (Initial Dev Preview):** Docker
+
+(Refer to `context/tech.md` for more details before it was gitignored - this information should ideally be moved here or to a more permanent project documentation space if `context` is purely for temporary AI interaction files).
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   Node.js (v20 or later recommended)
+*   npm (or yarn/pnpm)
+*   Docker (for running the dev environment as currently set up)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development Environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Clone the repository (if applicable).**
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Set up environment variables:**
+    Create a `.env.local` file in the root directory and add your Supabase URL and Anon Key:
+    ```
+    NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+    ```
+4.  **Run the development server (locally without Docker):**
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5.  **Run with Docker (as set up in previous steps):**
+    *   Build the image: `docker build -t afroball-connect-dev .`
+    *   Run the container: `docker run -d -p 3000:3000 --name afroball-connect-app afroball-connect-dev`
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+*   `/src/app`: Core application pages and layouts (App Router).
+*   `/src/components`: Reusable UI components (including shadcn/ui components).
+*   `/src/lib`: Utility functions (e.g., `cn` from shadcn/ui).
+*   `/public`: Static assets.
+*   `Dockerfile`: For containerizing the application.
+*   `.dockerignore`: Specifies files to ignore for Docker builds.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Future Roadmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This section outlines the planned future development for AfroBall Connect.
 
-## Deploy on Vercel
+### Phase 1: Landing Page Enhancements & Pre-Launch (Current Focus)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*   [ ] **Mailing List Integration:** Fully implement Supabase backend for mailing list sign-ups.
+*   [ ] **Detailed Features Section:** Expand on the features placeholder with more compelling copy and visuals.
+*   [ ] **App Prototype Page/Link:** Create a dedicated page or link to an external Figma/interactive prototype showcasing the app's UI/UX.
+*   [ ] **Content Update:** Replace all placeholder text and images with final brand assets and copy.
+*   [ ] **SEO Optimization:** Basic on-page SEO for the landing page.
+*   [ ] **Responsive Design Polish:** Ensure flawless display across all major devices and screen sizes.
+*   [ ] **Accessibility (A11y) Review:** Basic accessibility checks.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Phase 2: Core Application Development (Post-Landing Page Launch)
+
+*   [ ] **User Authentication:** Secure user registration and login (likely with Supabase Auth).
+*   [ ] **Video Streaming Integration:** Integrate a robust video streaming solution for live matches and VOD.
+*   [ ] **Content Management System (CMS):** Set up a CMS for managing match schedules, news, and other dynamic content.
+*   [ ] **User Profiles & Preferences:** Allow users to customize their experience.
+*   [ ] **Search & Discovery:** Powerful search functionality for matches, teams, players, etc.
+*   [ ] **Community Features:** Forums, comment sections, or social sharing.
+*   [ ] **Subscription & Payments:** If applicable, integrate a payment gateway for premium features.
+*   [ ] **Admin Dashboard:** For managing users, content, and platform settings.
+
+### Phase 3: Expansion & Advanced Features
+
+*   [ ] **Mobile Applications:** Develop native iOS and Android apps.
+*   [ ] **Personalized Recommendations:** AI-driven content suggestions.
+*   [ ] **Interactive Stats & Data Visualizations:** Rich data for football nerds.
+*   [ ] **Multilingual Support:** Cater to a broader African and global audience.
+*   [ ] **Partnerships & Integrations:** Collaborate with leagues, clubs, and other media outlets.
+
+## Contributing
+
+Details on how to contribute to the project will be added here if it becomes open source or accepts external contributions.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

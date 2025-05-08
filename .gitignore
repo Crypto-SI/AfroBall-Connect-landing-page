@@ -39,3 +39,34 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Static HTML export files
+/export
+
+# Sentry
+.sentryclirc
+
+# Local Environment Variables
+.env*.local
+.env
+
+# Editor directories and files
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# System files
+Thumbs.db
+
+# Next-Auth specific
+next-auth.session-token
+
+# Turborepo
+.turbo
+
+# Context folder (as requested)
+/context/
