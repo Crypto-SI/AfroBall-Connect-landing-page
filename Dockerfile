@@ -18,39 +18,54 @@ COPY package.json package-lock.json* ./
 # Or if using yarn:
 # COPY package.json yarn.lock ./
 
-# Install app dependencies
-# If using pnpm, ensure pnpm-lock.yaml is copied and use pnpm install
-RUN npm install --frozen-lockfile
-# Or if using pnpm:
-# RUN pnpm install --frozen-lockfile
-# Or if using yarn:
-# RUN yarn install --frozen-lockfile
+# Install dependencies
+RUN npm ci --frozen-lockfile
 
 # --- Builder Stage ---
 FROM base AS builder
 WORKDIR /app
+
+# Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
+
+# Copy all project files
 COPY . .
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
-# ENV NEXT_TELEMETRY_DISABLED 1
+# Disable Next.js telemetry in builds
+ENV NEXT_TELEMETRY_DISABLED 1
 
-# Build the Next.js application (though for dev, this step is often skipped or different)
-# For a dev server, we usually don't build like this. We run `npm run dev`.
-# This build command is more for production.
-# RUN npm run build
+# Build the Next.js application for production
+RUN npm run build
 
-# --- Runner Stage (for Development) ---
+# --- Production Runner Stage ---
 FROM base AS runner
 WORKDIR /app
 
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+# Set to production environment
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
-# Expose port 3000 to the outside world
+# Create a non-root user to run the app and own app files
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
+
+# Copy only the necessary files from the builder stage
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+# Set the correct ownership
+RUN chown -R nextjs:nodejs /app
+
+# Switch to non-root user
+USER nextjs
+
+# Expose port
 EXPOSE 3000
 
-# Command to run the app in development mode
-CMD ["npm", "run", "dev"] 
+# Set the host to be accessible outside the container
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+# Command to run the application
+CMD ["node", "server.js"] 

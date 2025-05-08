@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import Image from "next/image";
+import Link from "next/link";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -26,7 +27,7 @@ function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b border-[#4A4A4A]/40 bg-[#363636]/95 backdrop-blur supports-[backdrop-filter]:bg-[#363636]/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 hidden md:flex">
-          <a href="/" className="mr-6 flex items-center space-x-2">
+          <Link href="/" className="mr-6 flex items-center space-x-2">
             <Image 
               src="/afroballlogo.png" 
               alt="AfroBall Connect Logo" 
@@ -35,7 +36,7 @@ function SiteHeader() {
               className="h-10 w-auto"
             />
             <span className="hidden font-bold sm:inline-block font-heading text-[#F2EDE4]">AFROBALL CONNECT</span>
-          </a>
+          </Link>
           <nav className="flex items-center gap-6 text-sm">
             <a href="#features" className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60">Features</a>
             <a href="#prototype" className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60">App Prototype</a>

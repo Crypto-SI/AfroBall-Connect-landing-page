@@ -48,6 +48,65 @@ This Next.js application serves as the initial landing page for AfroBall Connect
     *   Run the container: `docker run -d -p 3000:3000 --name afroball-connect-app afroball-connect-dev`
     Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Docker Deployment
+
+This project is configured for Docker deployment in a production environment.
+
+### Prerequisites
+
+- Docker installed on your machine
+- Git repository cloned
+
+### Option 1: Using Docker Build Script
+
+The simplest way to build and run the application in a Docker container:
+
+```bash
+# Make the script executable (if not already)
+chmod +x docker-build.sh
+
+# Run the build script
+./docker-build.sh
+```
+
+This will build a Docker image and start the container, making the application available at http://localhost:3000.
+
+### Option 2: Using Docker Compose
+
+For a more managed deployment with health checks and easier configuration:
+
+```bash
+# Make the script executable (if not already)
+chmod +x docker-compose-build.sh
+
+# Run the compose build script
+./docker-compose-build.sh
+```
+
+This will:
+1. Build the Docker image using the Dockerfile
+2. Start the container in detached mode
+3. Make the application available at http://localhost:3000
+
+To view logs:
+```bash
+docker compose logs -f
+```
+
+To stop the service:
+```bash
+docker compose down
+```
+
+### Docker Configuration Details
+
+- The application is built in a multi-stage Docker process to minimize the image size
+- Production optimizations:
+  - Only required files are included in the final image
+  - Non-root user (nextjs) for improved security
+  - Standalone output configuration
+  - Health checks for container monitoring
+
 ## Project Structure
 
 *   `/src/app`: Core application pages and layouts (App Router).
