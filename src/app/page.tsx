@@ -270,10 +270,14 @@ export default function HomePage() {
               </ul>
             </div>
             <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg">
-              {/* Placeholder for Community image */}
-              <div className="aspect-video w-full max-w-md bg-[#F2EDE4]/20 rounded-lg flex items-center justify-center">
-                <p className="text-[#F2EDE4] font-medium">Community Features Image</p>
-              </div>
+              <Image
+                src="/social.jpg"
+                alt="AfroBall Connect community and social features"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover w-full h-auto shadow-lg"
+                priority
+              />
             </div>
           </div>
         </div>
