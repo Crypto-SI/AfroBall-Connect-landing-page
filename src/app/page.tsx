@@ -288,10 +288,14 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
             <div className="flex items-center justify-center p-6 bg-[#363636]/10 rounded-lg order-last lg:order-first">
-              {/* Placeholder for Inclusive Access image */}
-              <div className="aspect-video w-full max-w-md bg-[#363636]/20 rounded-lg flex items-center justify-center">
-                <p className="text-[#363636] font-medium">Inclusive Access Image</p>
-              </div>
+              <Image
+                src="/halal.png"
+                alt="AfroBall Connect halal and child-friendly content options"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover w-full h-auto shadow-lg"
+                priority
+              />
             </div>
             <div className="flex flex-col justify-center space-y-4">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
