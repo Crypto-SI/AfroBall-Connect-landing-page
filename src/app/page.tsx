@@ -76,6 +76,341 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Detailed Features Sections */}
+
+      {/* Live Streaming Section */}
+      <section className="w-full py-12 md:py-24 bg-[#363636] text-[#F2EDE4]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                Live Streaming: Your Front Row Seat to African Football
+              </h2>
+              <p className="text-[#F2EDE4] md:text-lg">
+                Experience HD quality streams of African football from anywhere in the world. 
+                We cover major leagues, tournaments, and exclusive matches with minimal delay.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>HD quality streams with multiple camera angles</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Global access from any device</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Comprehensive league and tournament coverage</span>
+                </li>
+              </ul>
+            </div>
+            <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg">
+              {/* Placeholder for Live Streaming image */}
+              <div className="aspect-video w-full max-w-md bg-[#F2EDE4]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#F2EDE4] font-medium">Live Stream Image</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Official Merchandise Section */}
+      <section className="w-full py-12 md:py-24 bg-[#F2EDE4] text-[#363636]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex items-center justify-center p-6 bg-[#363636]/10 rounded-lg order-last lg:order-first">
+              {/* Placeholder for Merchandise image */}
+              <div className="aspect-video w-full max-w-md bg-[#363636]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#363636] font-medium">Merchandise Image</p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                Official Merchandise: Wear Your Passion, Support Your Team
+              </h2>
+              <p className="text-[#363636] md:text-lg">
+                Shop for authentic jerseys and fan gear from your favorite African teams. 
+                We ship globally, bringing African football merchandise to fans everywhere.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Authentic jerseys from all major teams</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Extensive fan gear collection</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Global shipping with tracking</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Integrated Betting Section */}
+      <section className="w-full py-12 md:py-24 bg-[#363636] text-[#F2EDE4]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                Integrated Betting: Elevate the Excitement, Safely & Securely
+              </h2>
+              <p className="text-[#F2EDE4] md:text-lg">
+                Enhance your viewing experience with our fully regulated betting platform. 
+                Place bets on diverse markets with ease and security, directly from the stream.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Fully regulated betting platform</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Diverse betting markets</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Seamless integration with live streams</span>
+                </li>
+              </ul>
+            </div>
+            <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg">
+              {/* Placeholder for Betting image */}
+              <div className="aspect-video w-full max-w-md bg-[#F2EDE4]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#F2EDE4] font-medium">Betting Platform Image</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Simple Payment Tiers Section */}
+      <section className="w-full py-12 md:py-24 bg-[#F2EDE4] text-[#363636]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex items-center justify-center p-6 bg-[#363636]/10 rounded-lg order-last lg:order-first">
+              {/* Placeholder for Payment Tiers image */}
+              <div className="aspect-video w-full max-w-md bg-[#363636]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#363636] font-medium">Payment Tiers Image</p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                Simple Payment Tiers: Access Made Easy for Every Fan
+              </h2>
+              <p className="text-[#363636] md:text-lg">
+                Choose the subscription option that works for you. From per-game passes to seasonal subscriptions, 
+                we offer flexible payment options including local payment methods.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Pay-per-game options</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Season pass subscriptions</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Support for local payment methods</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Community & Social Section */}
+      <section className="w-full py-12 md:py-24 bg-[#363636] text-[#F2EDE4]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                Community & Social: Connect with Fans & Influencers Worldwide
+              </h2>
+              <p className="text-[#F2EDE4] md:text-lg">
+                Join a vibrant community of African football fans. Engage with social media integrations, 
+                participate in fan forums, and connect with influencers and other fans.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Seamless social media integration</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Influencer collaborations and content</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Active fan forums and discussions</span>
+                </li>
+              </ul>
+            </div>
+            <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg">
+              {/* Placeholder for Community image */}
+              <div className="aspect-video w-full max-w-md bg-[#F2EDE4]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#F2EDE4] font-medium">Community Features Image</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Inclusive Access Section */}
+      <section className="w-full py-12 md:py-24 bg-[#F2EDE4] text-[#363636]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex items-center justify-center p-6 bg-[#363636]/10 rounded-lg order-last lg:order-first">
+              {/* Placeholder for Inclusive Access image */}
+              <div className="aspect-video w-full max-w-md bg-[#363636]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#363636] font-medium">Inclusive Access Image</p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                Inclusive Access: Halal & Child-Friendly Experiences
+              </h2>
+              <p className="text-[#363636] md:text-lg">
+                We cater to diverse audience needs with specialized versions of our platform. 
+                Enjoy halal-compliant content and child-friendly experiences with appropriate filters.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Halal-compliant content options</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Child-friendly app versions</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Content filters for diverse audience needs</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Beyond the Pitch Section */}
+      <section className="w-full py-12 md:py-24 bg-[#363636] text-[#F2EDE4]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                Beyond the Pitch: Exclusive Spin-Off Content
+              </h2>
+              <p className="text-[#F2EDE4] md:text-lg">
+                Dive deeper with our Netflix-style documentaries, player profiles, and behind-the-scenes content. 
+                Get to know your favorite players and teams like never before.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Netflix-style football documentaries</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>In-depth player profiles and interviews</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Exclusive behind-the-scenes content</span>
+                </li>
+              </ul>
+            </div>
+            <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg">
+              {/* Placeholder for Documentary image */}
+              <div className="aspect-video w-full max-w-md bg-[#F2EDE4]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#F2EDE4] font-medium">Documentary Content Image</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Stage Section */}
+      <section className="w-full py-12 md:py-24 bg-[#F2EDE4] text-[#363636]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex items-center justify-center p-6 bg-[#363636]/10 rounded-lg order-last lg:order-first">
+              {/* Placeholder for Global Stage image */}
+              <div className="aspect-video w-full max-w-md bg-[#363636]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#363636] font-medium">Global Stage Image</p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                Global Stage: Showcase Friendlies Against World Giants
+              </h2>
+              <p className="text-[#363636] md:text-lg">
+                Watch African teams take on prestigious opponents in international friendlies. 
+                See African talent showcased on the global stage through tours and special matches.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Matches against prestigious international opponents</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Coverage of international tours</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Showcasing African talent globally</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Game Section */}
+      <section className="w-full py-12 md:py-24 bg-[#363636] text-[#F2EDE4]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
+            <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
+                The Ultimate Fan Dream: The AfroBall Connect Video Game
+              </h2>
+              <p className="text-[#F2EDE4] md:text-lg">
+                Our future vision includes an immersive video game featuring African leagues and players. 
+                Experience realistic gameplay, career modes, and more in this upcoming extension of our platform.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Immersive gameplay with African leagues</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Detailed career and manager modes</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="mr-2 h-2 w-2 rounded-full bg-[#F37021]"></div>
+                  <span>Future vision of the AfroBall Connect platform</span>
+                </li>
+              </ul>
+            </div>
+            <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg">
+              {/* Placeholder for Video Game image */}
+              <div className="aspect-video w-full max-w-md bg-[#F2EDE4]/20 rounded-lg flex items-center justify-center">
+                <p className="text-[#F2EDE4] font-medium">Video Game Concept Image</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* App Prototype Link Section */}
       <section id="prototype" className="w-full py-12 md:py-24 lg:py-32 bg-[#4A4A4A] text-[#F2EDE4]">
         <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
