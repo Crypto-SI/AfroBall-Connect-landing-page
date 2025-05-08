@@ -5,6 +5,10 @@ import Link from "next/link";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import dynamic from "next/dynamic";
+
+// Import the client-side MobileHeader component with dynamic import to avoid SSR issues
+const MobileHeader = dynamic(() => import("@/components/mobile-header"), { ssr: false });
 
 const fontInter = Inter({
   subsets: ["latin"],
@@ -21,32 +25,6 @@ export const metadata: Metadata = {
   title: "AfroBall Connect - Stream African Football",
   description: "The premier global destination for streaming African football. Passion, Authenticity, Connection.",
 };
-
-function SiteHeader() {
-  return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#4A4A4A]/40 bg-[#363636]/95 backdrop-blur supports-[backdrop-filter]:bg-[#363636]/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Image 
-              src="/afroballlogo.png" 
-              alt="AfroBall Connect Logo" 
-              width={40} 
-              height={40} 
-              className="h-10 w-auto"
-            />
-            <span className="hidden font-bold sm:inline-block font-heading text-[#F2EDE4]">AFROBALL CONNECT</span>
-          </Link>
-          <nav className="flex items-center gap-6 text-sm">
-            <a href="#features" className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60">Features</a>
-            <a href="#prototype" className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60">App Prototype</a>
-            <a href="#contact" className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60">Contact</a>
-          </nav>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 function SiteFooter() {
   return (
@@ -84,7 +62,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative flex min-h-dvh flex-col bg-[#363636]">
-            <SiteHeader />
+            <MobileHeader />
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </div>
