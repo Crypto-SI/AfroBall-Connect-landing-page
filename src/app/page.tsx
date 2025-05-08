@@ -106,10 +106,14 @@ export default function HomePage() {
               </ul>
             </div>
             <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg">
-              {/* Placeholder for Live Streaming image */}
-              <div className="aspect-video w-full max-w-md bg-[#F2EDE4]/20 rounded-lg flex items-center justify-center">
-                <p className="text-[#F2EDE4] font-medium">Live Stream Image</p>
-              </div>
+              <Image
+                src="/streaming.jpg"
+                alt="Live streaming of African football match"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover w-full h-auto shadow-lg"
+                priority
+              />
             </div>
           </div>
         </div>
