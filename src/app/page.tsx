@@ -5,18 +5,35 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[#363636] text-[#F2EDE4]">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 text-[#F2EDE4]">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 z-0" 
+          style={{
+            backgroundImage: "url('/hero.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-[#363636]/70"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="container relative z-10 mx-auto px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            {/* Logo Image */}
+            {/* Circular Video Player */}
             <div className="flex items-center justify-center lg:order-last">
-              <Image
-                alt="AfroBall Connect Logo"
-                className="mx-auto aspect-square object-contain"
-                height="400"
-                src="/afroballlogo.png"
-                width="400"
-              />
+              <div className="h-[400px] w-[400px] rounded-full border-4 border-[#F37021] overflow-hidden">
+                <video 
+                  src="/ghana.mp4" 
+                  className="h-full w-full object-cover" 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                />
+              </div>
             </div>
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
@@ -31,7 +48,7 @@ export default function HomePage() {
                 <Button size="lg" className="bg-[#F37021] text-[#F2EDE4] hover:bg-[#F37021]/90">
                   Get Notified at Launch
                 </Button>
-                <Button size="lg" variant="outline" className="border-[#F37021] text-[#F37021] hover:bg-[#F37021] hover:text-[#F2EDE4]">
+                <Button size="lg" variant="outline" className="border-[#F37021] text-[#F37021] hover:bg-[#F37021] hover:text-[#F2EDE4] bg-[#363636]/80">
                   Explore Features
                 </Button>
               </div>
@@ -370,10 +387,14 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
             <div className="flex items-center justify-center p-6 bg-[#363636]/10 rounded-lg order-last lg:order-first">
-              {/* Placeholder for Global Stage image */}
-              <div className="aspect-video w-full max-w-md bg-[#363636]/20 rounded-lg flex items-center justify-center">
-                <p className="text-[#363636] font-medium">Global Stage Image</p>
-              </div>
+              <Image
+                src="/global.png"
+                alt="African teams competing on the global stage"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover w-full h-auto shadow-lg"
+                priority
+              />
             </div>
             <div className="flex flex-col justify-center space-y-4">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-[#F37021]">
@@ -429,11 +450,15 @@ export default function HomePage() {
                 </li>
               </ul>
             </div>
-            <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg">
-              {/* Placeholder for Video Game image */}
-              <div className="aspect-video w-full max-w-md bg-[#F2EDE4]/20 rounded-lg flex items-center justify-center">
-                <p className="text-[#F2EDE4] font-medium">Video Game Concept Image</p>
-              </div>
+            <div className="flex items-center justify-center p-6 bg-[#F2EDE4]/10 rounded-lg max-w-md mx-auto">
+              <Image
+                src="/videogame.png"
+                alt="AfroBall Connect video game concept"
+                width={300}
+                height={200}
+                className="rounded-lg object-cover w-full h-auto shadow-lg"
+                priority
+              />
             </div>
           </div>
         </div>
