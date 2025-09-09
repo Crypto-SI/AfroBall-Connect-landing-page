@@ -5,10 +5,7 @@ import Link from "next/link";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
-import dynamic from "next/dynamic";
-
-// Import the client-side MobileHeader component with dynamic import to avoid SSR issues
-const MobileHeader = dynamic(() => import("@/components/mobile-header"), { ssr: false });
+import LayoutHeaderWrapper from "@/components/layout-header-wrapper";
 
 const fontInter = Inter({
   subsets: ["latin"],
@@ -62,7 +59,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative flex min-h-dvh flex-col bg-[#363636]">
-            <MobileHeader />
+            <LayoutHeaderWrapper />
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </div>
