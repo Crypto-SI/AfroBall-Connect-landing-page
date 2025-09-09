@@ -5,163 +5,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { useState, useEffect, useRef } from 'react';
 
-// Extend Window interface to include Kit-related properties
-declare global {
-  interface Window {
-    kit: (...args: any[]) => void;
-    KitObject: any;
-  }
-}
 
-// Kit.com Mailing List Form Component
-function KitMailingListForm() {
-  const [showFallback, setShowFallback] = useState(false);
-  const [isLocalhost, setIsLocalhost] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if we're on localhost
-    const isLocal = typeof window !== 'undefined' &&
-                   (window.location.hostname === 'localhost' ||
-                    window.location.hostname === '127.0.0.1' ||
-                    window.location.hostname.includes('localhost'));
-    setIsLocalhost(isLocal);
-
-    // Only run on client side
-    if (typeof document === 'undefined' || !containerRef.current) return;
-
-    // Clear any existing content
-    containerRef.current.innerHTML = '';
-
-    // If on localhost, show fallback immediately with a note
-    if (isLocal) {
-      console.log('On localhost - showing fallback form (Kit.com may not work on dev domains)');
-      setShowFallback(true);
-      return;
-    }
-
-    // Create the script element with the exact embed code structure
-    const script = document.createElement('script');
-    script.async = true;
-    script.setAttribute('data-uid', '6273feb6f2');
-    script.src = 'https://afroballconnect.kit.com/6273feb6f2/index.js';
-    
-    // Add event listeners
-    script.onload = () => {
-      console.log('Kit.com script loaded successfully');
-      
-      // Give Kit.com time to render the form
-      setTimeout(() => {
-        if (containerRef.current) {
-          // Check if Kit.com has rendered a form
-          const hasContent = containerRef.current.children.length > 0;
-          if (!hasContent) {
-            console.log('Kit.com form not found, showing fallback');
-            setShowFallback(true);
-          }
-        }
-      }, 3000);
-    };
-
-    script.onerror = () => {
-      console.error('Failed to load Kit.com script');
-      setShowFallback(true);
-    };
-
-    // Add the script to the container
-    containerRef.current.appendChild(script);
-
-    // Set a timeout to show fallback if nothing happens
-    const timeoutId = setTimeout(() => {
-      if (!showFallback) {
-        console.log('Kit.com loading timeout, showing fallback');
-        setShowFallback(true);
-      }
-    }, 10000);
-
-    // Cleanup function
-    return () => {
-      clearTimeout(timeoutId);
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
-      }
-    };
-  }, [showFallback]);
-
-  if (showFallback) {
-    return (
-      <div className="text-center">
-        <div className="mb-4">
-          <svg className="h-8 w-8 mx-auto text-[#F37021]" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-          </svg>
-        </div>
-        {isLocalhost && (
-          <p className="text-[#666666] text-xs mb-2">
-            Development mode - using fallback form
-          </p>
-        )}
-        <p className="text-[#363636] text-sm mb-4">
-          {isLocalhost ? 'Subscription form for development testing' : 'Unable to load subscription form'}
-        </p>
-        <form className="space-y-4 max-w-md mx-auto" onSubmit={(e) => {
-          e.preventDefault();
-          const form = e.target as HTMLFormElement;
-          const email = (form.querySelector('#kit-email') as HTMLInputElement).value;
-          console.log('Subscription received:', email);
-          
-          // Show success message
-          const container = form.closest('.text-center') as HTMLElement;
-          if (container) {
-            container.innerHTML = `
-              <div class="text-green-600 mb-2">
-                <svg class="h-8 w-8 mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <p class="text-[#363636] text-sm mb-4">Thank you for subscribing! We'll keep you updated with AfroBall Connect news.</p>
-              ${isLocalhost ? '<p class="text-xs text-[#666666]">This is a demo submission. In production, this would connect to your mailing list.</p>' : ''}
-            `;
-          }
-          
-          // Reset form
-          form.reset();
-        }}>
-          <div>
-            <label htmlFor="kit-email" className="block text-sm font-medium text-[#363636] mb-1">Email Address</label>
-            <input
-              type="email"
-              id="kit-email"
-              name="email"
-              required
-              className="w-full px-3 py-2 border border-[#4A4A4A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#F37021] focus:border-transparent"
-              placeholder="Enter your email"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-[#F37021] text-[#F2EDE4] py-2 px-4 rounded-md hover:bg-[#F37021]/90 transition-colors font-medium"
-          >
-            Subscribe to Updates
-          </button>
-          <p className="text-xs text-[#666666] text-center">
-            By subscribing, you agree to receive updates about AfroBall Connect.
-          </p>
-        </form>
-      </div>
-    );
-  }
-
-  return (
-    <div ref={containerRef} className="min-h-[300px] flex items-center justify-center">
-      {/* Loading state */}
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F37021] mx-auto mb-2"></div>
-        <p className="text-[#363636] text-sm">Loading subscription form...</p>
-      </div>
-    </div>
-  );
-}
 
 export default function HomePage() {
   const [showVideo, setShowVideo] = useState(false);
@@ -695,58 +539,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Mailing List Section */}
+      {/* Contact Information Section */}
       <section className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]">
         <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
           <div className="text-center mb-8 md:mb-10 w-full">
             <div className="space-y-3 mx-auto max-w-3xl">
-              <div className="inline-block rounded-lg bg-[#363636] px-3 py-1 text-sm text-[#F2EDE4] mx-auto">Stay Updated</div>
+              <div className="inline-block rounded-lg bg-[#363636] px-3 py-1 text-sm text-[#F2EDE4] mx-auto">Get In Touch</div>
               <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl text-[#F37021]">
-                Join Our Mailing List
+                Have Questions?
               </h2>
               <p className="text-[#4A4A4A] text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
-                Be the first to know about AfroBall Connect launch, exclusive content, and special offers.
+                For any further information about AfroBall Connect, our features, or partnership opportunities,
+                feel free to reach out to our team. We're here to help you learn more about our platform.
               </p>
               <p className="text-[#666666] text-sm">
-                Have questions? Contact us at <a href="mailto:info@afroballconnect.com" className="text-[#F37021] hover:underline">info@afroballconnect.com</a>
+                Email us at <a href="mailto:info@afroballconnect.com" className="text-[#F37021] hover:underline font-medium">info@afroballconnect.com</a>
               </p>
             </div>
           </div>
-          
-          <div className="w-full max-w-2xl">
-            <KitMailingListForm />
-          </div>
         </div>
       </section>
+
 
     </div>
   );
 }
 
 
-// Global fallback form handler for Kit.com
-if (typeof window !== 'undefined') {
-  (window as any).handleKitFallbackSubmit = function(event: Event) {
-    event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const email = (form.querySelector('#kit-email') as HTMLInputElement).value;
-    
-    console.log('Kit.com fallback subscription:', email);
-    
-    // Show success message
-    const container = form.closest('.text-center') as HTMLElement;
-    if (container) {
-      container.innerHTML = `
-        <div class="text-green-600 mb-2">
-          <svg class="h-8 w-8 mx-auto" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-          </svg>
-        </div>
-        <p class="text-[#363636] text-sm mb-4">Thank you for subscribing! We'll keep you updated with AfroBall Connect news.</p>
-      `;
-    }
-    
-    // Reset form
-    form.reset();
-  };
-}
