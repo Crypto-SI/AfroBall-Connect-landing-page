@@ -6,6 +6,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import LayoutHeaderWrapper from "@/components/layout-header-wrapper";
+import IntroAnimation from "@/components/intro-animation";
 
 const fontInter = Inter({
   subsets: ["latin"],
@@ -60,6 +61,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative flex min-h-dvh flex-col bg-[#363636]">
+            <IntroAnimation />
             <LayoutHeaderWrapper />
             <main className="flex-1">{children}</main>
             <SiteFooter />

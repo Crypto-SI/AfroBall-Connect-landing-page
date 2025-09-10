@@ -275,7 +275,7 @@ export default function HomePage() {
       </section>
 
       {/* Simple Payment Tiers Section */}
-      <section className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]">
+      <section id="afroball-connect-payment-tiers" className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-6 items-center lg:grid-cols-2 lg:gap-12">
             <div className="flex items-center justify-center p-3 sm:p-4 md:p-6 bg-[#363636]/10 rounded-lg order-last lg:order-first mt-6 lg:mt-0">
@@ -519,50 +519,51 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* App Prototype Link Section */}
-      <section id="prototype" className="w-full py-8 md:py-16 lg:py-24 bg-[#4A4A4A] text-[#F2EDE4]">
-        <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
-          <div className="space-y-3 text-center max-w-3xl">
-            <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter text-[#F37021]">
-              See What's Coming
-            </h2>
-            <p className="text-[#F2EDE4] text-sm sm:text-base md:text-lg lg:text-xl/relaxed max-w-2xl mx-auto">
-              Check out our interactive prototype to get a feel for the AfroBall Connect app experience.
-            </p>
-          </div>
-          <div className="mt-6 w-full sm:w-auto">
-            <Button size="lg" className="bg-[#F37021] text-[#F2EDE4] hover:bg-[#F37021]/90 w-full sm:w-auto">
-              View App Prototype (Coming Soon)
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Information Section */}
-      <section className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]">
+{/* Newsletter Section */}
+<section id="newsletter" className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]">
         <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
           <div className="text-center mb-8 md:mb-10 w-full">
             <div className="space-y-3 mx-auto max-w-3xl">
-              <div className="inline-block rounded-lg bg-[#363636] px-3 py-1 text-sm text-[#F2EDE4] mx-auto">Get In Touch</div>
+              <div className="inline-block rounded-lg bg-[#F37021] px-3 py-1 text-sm text-[#363636] mx-auto">Newsletter</div>
               <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl text-[#F37021]">
-                Have Questions?
+                Join the AfroBallConnect Newsletter
               </h2>
-              <p className="text-[#4A4A4A] text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
-                For any further information about AfroBall Connect, our features, or partnership opportunities,
-                feel free to reach out to our team. We're here to help you learn more about our platform.
+              <p className="text-[#363636] text-sm sm:text-base md:text-lg lg:text-xl/relaxed max-w-2xl mx-auto">
+                Subscribe to get our latest content by email. Stay updated with the latest African football news, matches, and exclusive content.
               </p>
-              <p className="text-[#666666] text-sm">
-                Email us at <a href="mailto:info@afroballconnect.com" className="text-[#F37021] hover:underline font-medium">info@afroballconnect.com</a>
+              <p className="text-[#363636] text-sm sm:text-base mt-4">
+                For partnership opportunities or media inquiries, email us at <a href="mailto:info@afroballconnect.com" className="text-[#F37021] hover:underline font-medium">info@afroballconnect.com</a>
               </p>
+              <div className="mt-6">
+                <Button
+                  size="lg"
+                  className="bg-[#F37021] text-[#F2EDE4] hover:bg-[#F37021]/90 border border-[#F37021] hover:border-[#F37021]/80 transition-all duration-200"
+                  asChild
+                >
+                  <a
+                    href="https://afroballconnect.kit.com/6273feb6f2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Join List
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
+          
         </div>
       </section>
-
 
     </div>
   );
 }
 
 
+
+
+      {/* ConvertKit Script */}
+      <Script 
+        src="https://f.convertkit.com/ckjs/ck.5.js" 
+        strategy="afterInteractive"
+      />
