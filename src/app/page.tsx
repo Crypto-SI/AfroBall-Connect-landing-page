@@ -3,12 +3,39 @@
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import Script from 'next/script';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import IntroAnimation from "@/components/intro-animation";
 
 
 
 export default function HomePage() {
   const [showVideo, setShowVideo] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  
+  useEffect(() => {
+    // Check if this is initial load or hash navigation
+    const hash = window.location.hash.substring(1); // Remove the '#' character
+    
+    if (hash) {
+      // This is hash navigation, don't show intro animation
+      setIsInitialLoad(false);
+      
+      // Small delay to ensure page is fully loaded
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          // Prevent default browser behavior and scroll directly
+          window.scrollTo({
+            top: element.offsetTop - 80, // Account for fixed header
+            behavior: 'smooth'
+          });
+        }
+      }, 200);
+    } else {
+      // This is initial load, show intro animation
+      setIsInitialLoad(true);
+    }
+  }, []);
   return (
     <div>
       {/* Hero Section */}
@@ -63,6 +90,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Intro Animation - Only show on initial load */}
+      {isInitialLoad && <IntroAnimation showOnLoad={true} />}
 
       {/* Features Section */}
       <section id="features" className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]">

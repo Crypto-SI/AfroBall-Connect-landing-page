@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
 
 export default function MobileHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,12 +17,41 @@ export default function MobileHeader() {
 
   // Smooth scrolling function
   const scrollToSection = (elementId: string) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    if (window.location.pathname !== '/') {
+      // If not on landing page, navigate to landing page with hash using replace
+      const url = `/#${elementId}`;
+      window.location.replace(url);
+      
+      // Set up a one-time scroll handler for when the page loads
+      const checkAndScroll = () => {
+        setTimeout(() => {
+          const element = document.getElementById(elementId);
+          if (element) {
+            // Scroll to element without showing the top first
+            window.scrollTo({
+              top: element.offsetTop - 80, // Account for fixed header
+              behavior: 'smooth'
+            });
+            window.removeEventListener('load', checkAndScroll);
+          }
+        }, 200);
+      };
+      
+      // Add event listener for page load
+      window.addEventListener('load', checkAndScroll);
+    } else {
+      // If already on landing page, scroll to section
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          // Set hash and scroll to element
+          window.location.hash = elementId;
+          window.scrollTo({
+            top: element.offsetTop - 80, // Account for fixed header
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
     }
   };
 
@@ -50,6 +78,18 @@ export default function MobileHeader() {
           >
             Features
           </button>
+          <Link
+            href="/club-websites"
+            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+          >
+            Club Websites
+          </Link>
+          <Link
+            href="/touchline-creators"
+            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+          >
+            Touchline Creators
+          </Link>
           <button
             onClick={() => scrollToSection('afroball-connect-payment-tiers')}
             className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
@@ -89,6 +129,20 @@ export default function MobileHeader() {
           >
             Features
           </button>
+          <Link
+            href="/club-websites"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            onClick={closeMobileMenu}
+          >
+            Club Websites
+          </Link>
+          <Link
+            href="/touchline-creators"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            onClick={closeMobileMenu}
+          >
+            Touchline Creators
+          </Link>
           <button
             onClick={() => {
               scrollToSection('afroball-connect-payment-tiers');

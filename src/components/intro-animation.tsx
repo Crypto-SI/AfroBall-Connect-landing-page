@@ -3,11 +3,17 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function IntroAnimation() {
-  const [isVisible, setIsVisible] = useState(true);
-  const [isAnimating, setIsAnimating] = useState(true);
+export default function IntroAnimation({ showOnLoad = true }: { showOnLoad?: boolean }) {
+  const [isVisible, setIsVisible] = useState(showOnLoad);
+  const [isAnimating, setIsAnimating] = useState(showOnLoad);
 
   useEffect(() => {
+    if (!showOnLoad) {
+      // If not supposed to show on load, hide immediately
+      setIsVisible(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
       setIsAnimating(false);
       setTimeout(() => {
@@ -16,17 +22,17 @@ export default function IntroAnimation() {
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [showOnLoad]);
 
   if (!isVisible) return null;
 
   // Pre-calculate particle positions to avoid hydration mismatch
   const particles = Array.from({ length: 20 }, (_, i) => ({
     id: i,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    delay: Math.random() * 3,
-    duration: 3 + Math.random() * 2
+    left: typeof window !== 'undefined' ? Math.random() * 100 : 0,
+    top: typeof window !== 'undefined' ? Math.random() * 100 : 0,
+    delay: typeof window !== 'undefined' ? Math.random() * 3 : 0,
+    duration: typeof window !== 'undefined' ? 3 + Math.random() * 2 : 5
   }));
 
   return (

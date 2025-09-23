@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -61,7 +59,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative flex min-h-dvh flex-col bg-[#363636]">
-            <IntroAnimation />
+            <IntroAnimation showOnLoad={false} />
             <LayoutHeaderWrapper />
             <main className="flex-1">{children}</main>
             <SiteFooter />
