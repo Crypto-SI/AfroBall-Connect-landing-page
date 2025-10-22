@@ -4,15 +4,21 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function IntroAnimation({ showOnLoad = true }: { showOnLoad?: boolean }) {
-  const [isVisible, setIsVisible] = useState(showOnLoad);
-  const [isAnimating, setIsAnimating] = useState(showOnLoad);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    
     if (!showOnLoad) {
       // If not supposed to show on load, hide immediately
       setIsVisible(false);
       return;
     }
+
+    setIsVisible(true);
+    setIsAnimating(true);
 
     const timer = setTimeout(() => {
       setIsAnimating(false);
@@ -24,16 +30,27 @@ export default function IntroAnimation({ showOnLoad = true }: { showOnLoad?: boo
     return () => clearTimeout(timer);
   }, [showOnLoad]);
 
-  if (!isVisible) return null;
+  // Don't render anything until mounted on client
+  if (!isMounted || !isVisible) return null;
 
   // Pre-calculate particle positions to avoid hydration mismatch
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    left: typeof window !== 'undefined' ? Math.random() * 100 : 0,
-    top: typeof window !== 'undefined' ? Math.random() * 100 : 0,
-    delay: typeof window !== 'undefined' ? Math.random() * 3 : 0,
-    duration: typeof window !== 'undefined' ? 3 + Math.random() * 2 : 5
-  }));
+  // Use deterministic pseudo-random values that are consistent between server and client
+  const particles = Array.from({ length: 20 }, (_, i) => {
+    // Use a simple hash function to generate deterministic values
+    const seed = i * 12345;
+    const random = () => {
+      const x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    };
+    
+    return {
+      id: i,
+      left: random() * 100,
+      top: random() * 100,
+      delay: random() * 3,
+      duration: 3 + random() * 2
+    };
+  });
 
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center bg-[#363636] transition-opacity duration-500 ${isAnimating ? 'opacity-100' : 'opacity-0'}`}>
@@ -48,10 +65,10 @@ export default function IntroAnimation({ showOnLoad = true }: { showOnLoad?: boo
               key={particle.id}
               className="absolute w-2 h-2 bg-[#F37021]/40 rounded-full animate-float"
               style={{
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
-                animationDelay: `${particle.delay}s`,
-                animationDuration: `${particle.duration}s`
+                left: `${particle.left.toFixed(5)}%`,
+                top: `${particle.top.toFixed(5)}%`,
+                animationDelay: `${particle.delay.toFixed(5)}s`,
+                animationDuration: `${particle.duration.toFixed(5)}s`
               }}
             ></div>
           ))}

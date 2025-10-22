@@ -11,7 +11,7 @@ export default function TouchlineCreatorsPage() {
         <div 
           className="absolute inset-0 z-0" 
           style={{
-            backgroundImage: "url('/hero.png')",
+            backgroundImage: "url(&apos;/hero.png&apos;)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -102,7 +102,7 @@ export default function TouchlineCreatorsPage() {
               <div className="text-2xl mb-4">📽</div>
               <h3 className="text-lg font-bold font-heading text-[#F37021] mb-2">Match Reviews</h3>
               <p className="text-sm text-[#F2EDE4]/80">
-                Honest fan-centric breakdowns of each game's events and turning points.
+                Honest fan-centric breakdowns of each game&apos;s events and turning points.
               </p>
             </div>
             <div className="bg-[#F2EDE4]/10 p-6 rounded-lg border border-[#F37021]/20 hover:border-[#F37021]/40 transition-all">
@@ -265,10 +265,10 @@ export default function TouchlineCreatorsPage() {
                   Future Opportunities
                 </h2>
                 <p className="text-[#363636] text-sm sm:text-base md:text-lg">
-                  Touchline Creators aren't just content contributors — they're building a portfolio. As AfroBall Connect grows and clubs develop their digital media departments, top-performing creators will be fast-tracked to become official Club Press Officers.
+                  Touchline Creators aren&apos;t just content contributors — they&apos;re building a portfolio. As AfroBall Connect grows and clubs develop their digital media departments, top-performing creators will be fast-tracked to become official Club Press Officers.
                 </p>
                 <p className="text-[#363636] text-sm sm:text-base md:text-lg">
-                  This pathway gives young African football enthusiasts a professional gateway into sports journalism, media production, and public relations — an industry that's rapidly growing across the continent.
+                  This pathway gives young African football enthusiasts a professional gateway into sports journalism, media production, and public relations — an industry that&apos;s rapidly growing across the continent.
                 </p>
               </div>
             </div>
@@ -341,7 +341,7 @@ export default function TouchlineCreatorsPage() {
                 Ready to Become a Touchline Creator?
               </h2>
               <p className="text-[#363636] text-sm sm:text-base md:text-lg lg:text-xl/relaxed max-w-2xl mx-auto">
-                Join the movement that's shaping the future of African football media. Apply now to become the official voice of your club.
+                Join the movement that&apos;s shaping the future of African football media. Apply now to become the official voice of your club.
               </p>
               <div className="mt-6">
                 <Button size="lg" className="bg-[#F37021] text-[#F2EDE4] hover:bg-[#F37021]/90 w-full sm:w-auto">

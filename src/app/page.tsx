@@ -4,15 +4,18 @@ import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import Script from 'next/script';
 import { useState, useEffect } from 'react';
-import IntroAnimation from "@/components/intro-animation";
+import IntroAnimationWrapper from "@/components/intro-animation-wrapper";
 
 
 
 export default function HomePage() {
   const [showVideo, setShowVideo] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
   
   useEffect(() => {
+    setIsMounted(true);
+    
     // Check if this is initial load or hash navigation
     const hash = window.location.hash.substring(1); // Remove the '#' character
     
@@ -36,6 +39,66 @@ export default function HomePage() {
       setIsInitialLoad(true);
     }
   }, []);
+  // Don't render dynamic content until mounted on client
+  if (!isMounted) {
+    return (
+      <div>
+        {/* Hero Section */}
+        <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 text-[#F2EDE4]">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: "url('/hero.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-[#363636]/70"></div>
+          </div>
+          
+          {/* Content */}
+          <div className="container relative z-10 mx-auto px-4 md:px-6">
+            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+              {/* Circular Video Player */}
+              <div className="flex items-center justify-center mt-4 lg:mt-0 lg:order-last">
+                <div className="h-[250px] w-[250px] sm:h-[300px] sm:w-[300px] md:h-[350px] md:w-[350px] lg:h-[400px] lg:w-[400px] rounded-full border-4 border-[#F37021] overflow-hidden">
+                  <video
+                    src="/ghana.mp4"
+                    className="h-full w-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col justify-center space-y-4 py-4 text-center lg:text-left">
+                <div className="space-y-2">
+                  <h1 className="font-heading text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl/none text-[#F37021]">
+                    The Ultimate Destination for African Football
+                  </h1>
+                  <p className="max-w-[600px] mx-auto lg:mx-0 text-[#F2EDE4] text-base md:text-lg lg:text-xl">
+                    Experience the passion, skill, and drama of African football like never before. Stream live matches, catch up on highlights, and connect with a global community of fans.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                  <Button size="lg" className="bg-[#F37021] text-[#F2EDE4] hover:bg-[#F37021]/90 w-full sm:w-auto">
+                    Get Notified at Launch
+                  </Button>
+                  <Button size="lg" variant="outline" className="border-[#F37021] text-[#F37021] hover:bg-[#F37021] hover:text-[#F2EDE4] bg-[#363636]/80 w-full sm:w-auto">
+                    Explore Features
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div>
       {/* Hero Section */}
@@ -92,7 +155,7 @@ export default function HomePage() {
       </section>
 
       {/* Intro Animation - Only show on initial load */}
-      {isInitialLoad && <IntroAnimation showOnLoad={true} />}
+      {isInitialLoad && <IntroAnimationWrapper showOnLoad={true} />}
 
       {/* Features Section */}
       <section id="features" className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]">

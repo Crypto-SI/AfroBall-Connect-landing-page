@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function MobileHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -17,6 +22,8 @@ export default function MobileHeader() {
 
   // Smooth scrolling function
   const scrollToSection = (elementId: string) => {
+    if (!isMounted) return;
+    
     if (window.location.pathname !== '/') {
       // If not on landing page, navigate to landing page with hash using replace
       const url = `/#${elementId}`;
@@ -90,6 +97,12 @@ export default function MobileHeader() {
           >
             Touchline Creators
           </Link>
+          <Link
+            href="/partners"
+            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+          >
+            Partners
+          </Link>
           <button
             onClick={() => scrollToSection('afroball-connect-payment-tiers')}
             className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
@@ -142,6 +155,13 @@ export default function MobileHeader() {
             onClick={closeMobileMenu}
           >
             Touchline Creators
+          </Link>
+          <Link
+            href="/partners"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            onClick={closeMobileMenu}
+          >
+            Partners
           </Link>
           <button
             onClick={() => {

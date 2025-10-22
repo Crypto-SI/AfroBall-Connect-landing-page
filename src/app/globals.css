@@ -133,3 +133,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Partner card animations - optimized for smooth performance */
+@layer components {
+  .partner-card {
+    /* Enable hardware acceleration for smooth animations */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .partner-card {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+  
+  /* Optimize animations for mobile devices */
+  @media (max-width: 768px) {
+    .partner-card {
+      /* Slightly faster animations on mobile for better responsiveness */
+      transition-duration: 150ms !important;
+    }
+  }
+}
