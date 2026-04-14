@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
-import Script from 'next/script';
 import { useState, useEffect } from 'react';
 import IntroAnimationWrapper from "@/components/intro-animation-wrapper";
 
@@ -651,12 +650,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-
-
-
-      {/* ConvertKit Script */}
-      <Script 
-        src="https://f.convertkit.com/ckjs/ck.5.js" 
-        strategy="afterInteractive"
-      />
