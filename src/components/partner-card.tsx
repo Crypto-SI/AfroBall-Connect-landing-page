@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import { Partner, Position } from '@/types/formations';
 import { PositionTooltip } from './position-tooltip';
 
@@ -179,7 +180,7 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
         
         /* Hover effects - scale 1.05x and orange border */
         hover:scale-105
-        hover:border-[#F37021]
+        hover:border-brand-orange
         hover:shadow-lg
         hover:z-10
         
@@ -188,14 +189,14 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
         
         /* Touch-friendly interactions for mobile */
         active:scale-95
-        active:border-[#F37021]
+        active:border-brand-orange
         
         /* Enhanced focus states for accessibility - improved contrast and visibility */
         focus:outline-none
         focus:ring-4
-        focus:ring-[#F37021]
+        focus:ring-brand-orange
         focus:ring-opacity-75
-        focus:border-[#F37021]
+        focus:border-brand-orange
         focus:shadow-[0_0_0_2px_rgba(243,112,33,0.5)]
         focus:z-20
         
@@ -252,17 +253,19 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
       ) : (
         <>
           {/* Partner logo only - takes full card space */}
-          <div className="w-full h-full flex items-center justify-center p-1">
+          <div className="relative w-full h-full flex items-center justify-center p-1">
             {partner?.logo ? (
-              <img
+              <Image
                 src={partner.logo}
                 alt={`${partner.name} company logo`}
                 className="max-w-full max-h-full object-contain rounded-full"
-                loading="lazy"
+                fill
+                sizes="80px"
+                unoptimized
               />
             ) : (
               <div
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-[#F37021] rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl"
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-brand-orange rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl"
                 aria-label={`${partner?.name} initials`}
               >
                 {partner?.name?.charAt(0) || '?'}
@@ -284,7 +287,7 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
       
       {/* Lighting effect overlay when clicked */}
       {isAnimating && (
-        <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-[#F37021]/30 via-transparent to-[#F37021]/20 pointer-events-none animate-ping" />
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-brand-orange/30 via-transparent to-brand-orange/20 pointer-events-none animate-ping" />
       )}
     </div>
     

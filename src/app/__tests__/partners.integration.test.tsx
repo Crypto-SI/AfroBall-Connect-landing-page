@@ -88,9 +88,9 @@ describe('Partners Page Integration', () => {
     it('displays empty partner positions', () => {
       render(<PartnersPage />);
       
-      // All positions should be empty (showing + icons)
+      // Two founder positions are filled, so the remaining positions show + icons.
       const emptyPositions = screen.getAllByText('+');
-      expect(emptyPositions).toHaveLength(11);
+      expect(emptyPositions).toHaveLength(9);
     });
 
     it('shows position roles for empty cards', () => {
@@ -98,12 +98,13 @@ describe('Partners Page Integration', () => {
       
       expect(screen.getByText('Goalkeeper')).toBeInTheDocument();
       expect(screen.getByText('Left Back')).toBeInTheDocument();
-      expect(screen.getByText('Centre Back')).toBeInTheDocument();
+      expect(screen.getAllByText('Centre Back')).toHaveLength(2);
       expect(screen.getByText('Right Back')).toBeInTheDocument();
       expect(screen.getByText('Left Midfielder')).toBeInTheDocument();
-      expect(screen.getByText('Central Midfielder')).toBeInTheDocument();
+      expect(screen.getAllByText('Central Midfielder')).toHaveLength(2);
       expect(screen.getByText('Right Midfielder')).toBeInTheDocument();
-      expect(screen.getByText('Striker')).toBeInTheDocument();
+      expect(screen.getByTestId('partner-card-st1')).toHaveAccessibleName(/Striker/);
+      expect(screen.getByTestId('partner-card-st2')).toHaveAccessibleName(/Striker/);
     });
   });
 
@@ -131,7 +132,7 @@ describe('Partners Page Integration', () => {
     it('has navigation instructions for keyboard users', () => {
       render(<PartnersPage />);
       
-      const instructions = screen.getByText(/Use Tab to navigate between positions/);
+      const instructions = screen.getByText(/Navigate between partner positions using Tab/);
       expect(instructions).toBeInTheDocument();
     });
 

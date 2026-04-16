@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { PitchLayout } from '../pitch-layout';
 import { DEFAULT_FORMATION } from '@/types/formations';
 
@@ -27,7 +27,7 @@ describe('Partner Card Animations', () => {
     cards.forEach((card) => {
       // Check for hover animation classes
       expect(card).toHaveClass('hover:scale-105');
-      expect(card).toHaveClass('hover:border-[#F37021]');
+      expect(card).toHaveClass('hover:border-brand-orange');
       expect(card).toHaveClass('hover:shadow-lg');
       expect(card).toHaveClass('transform-gpu');
       expect(card).toHaveClass('will-change-transform');

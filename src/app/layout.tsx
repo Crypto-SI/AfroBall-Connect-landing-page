@@ -24,13 +24,13 @@ export const metadata: Metadata = {
 
 function SiteFooter() {
   return (
-    <footer className="py-6 md:px-8 md:py-0 border-t border-[#4A4A4A]/40">
+    <footer className="py-6 md:px-8 md:py-0 border-t border-brand-dark-grey/40">
       <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-        <p className="text-balance text-center text-sm leading-loose text-[#999999] md:text-left">
+        <p className="text-balance text-center text-sm leading-loose text-brand-medium-grey md:text-left">
           © {new Date().getFullYear()} AfroBall Connect. All rights reserved.
         </p>
-        <p className="text-balance text-center text-sm leading-loose text-[#999999] md:text-left">
-          Follow us on <a href="#" className="font-medium underline underline-offset-4 hover:text-[#F37021]">Social Media</a>
+        <p className="text-balance text-center text-sm leading-loose text-brand-medium-grey md:text-left">
+          Follow us on <a href="#" className="font-medium underline underline-offset-4 hover:text-brand-orange">Social Media</a>
         </p>
       </div>
     </footer>
@@ -47,7 +47,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "min-h-screen bg-[#363636] font-sans antialiased text-[#F2EDE4]",
+          "min-h-screen bg-brand-charcoal font-sans antialiased text-brand-cream",
           fontInter.variable,
           fontMontserrat.variable
         )}
@@ -59,7 +59,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-dvh flex-col bg-[#363636]">
+          <div className="relative flex min-h-dvh flex-col bg-brand-charcoal">
             <IntroAnimationWrapper showOnLoad={false} />
             <LayoutHeaderWrapper />
             <main className="flex-1">{children}</main>

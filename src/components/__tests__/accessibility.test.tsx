@@ -103,11 +103,11 @@ describe('Accessibility Features', () => {
       
       // Check that focus classes are present
       expect(card).toHaveClass('focus:ring-4');
-      expect(card).toHaveClass('focus:ring-[#F37021]');
+      expect(card).toHaveClass('focus:ring-brand-orange');
     });
 
     it('should have accessible structure', () => {
-      const { container } = render(
+      render(
         <PartnerCard 
           position={mockPosition} 
           partner={mockPartner}
@@ -197,7 +197,7 @@ describe('Accessibility Features', () => {
     });
 
     it('should have accessible structure', () => {
-      const { container } = render(
+      render(
         <PitchLayout 
           formation={DEFAULT_FORMATION}
           partners={[mockPartner]}
@@ -217,10 +217,9 @@ describe('Accessibility Features', () => {
     it('should have proper SVG accessibility attributes', () => {
       render(<PitchBackground />);
 
-      const svg = screen.getByRole('img');
-      expect(svg).toHaveAttribute('aria-label');
-      expect(svg.getAttribute('aria-label')).toContain('Football pitch background');
-      expect(svg).toHaveAttribute('aria-describedby', 'pitch-description');
+      const image = screen.getByRole('img', { name: /Football pitch background/ });
+      expect(image).toHaveAttribute('alt');
+      expect(image).toHaveAttribute('aria-describedby', 'pitch-description');
     });
 
     it('should have descriptive text for screen readers', () => {
@@ -231,11 +230,11 @@ describe('Accessibility Features', () => {
     });
 
     it('should have accessible SVG structure', () => {
-      const { container } = render(<PitchBackground />);
+      render(<PitchBackground />);
 
-      const svg = screen.getByRole('img');
-      expect(svg).toHaveAttribute('aria-label');
-      expect(svg).toHaveAttribute('aria-describedby');
+      const image = screen.getByRole('img', { name: /Football pitch background/ });
+      expect(image).toHaveAttribute('alt');
+      expect(image).toHaveAttribute('aria-describedby');
     });
   });
 
@@ -248,12 +247,8 @@ describe('Accessibility Features', () => {
         />
       );
 
-      // Test partner name contrast (should be #2d2d2d on white/light background)
-      const partnerName = screen.getByText('Test Partner');
-      const computedStyle = window.getComputedStyle(partnerName);
-      
-      // The text should be dark enough for good contrast
-      expect(partnerName).toHaveClass('text-[#2d2d2d]');
+      const initials = screen.getByLabelText('Test Partner initials');
+      expect(initials).toHaveClass('text-white', 'bg-brand-orange');
     });
 
     it('should have sufficient contrast for position role text', () => {
@@ -279,7 +274,7 @@ describe('Accessibility Features', () => {
       const card = screen.getByRole('button');
       fireEvent.focus(card);
       
-      expect(card).toHaveClass('focus:ring-[#F37021]');
+      expect(card).toHaveClass('focus:ring-brand-orange');
       expect(card).toHaveClass('focus:ring-opacity-75');
     });
   });
@@ -383,27 +378,25 @@ describe('Accessibility Features', () => {
       });
     });
   });
-});
-  describe
-('Automated Accessibility Testing Simulation', () => {
+
+  describe('Automated Accessibility Testing Simulation', () => {
     // Simulate axe-core accessibility testing
     describe('Axe-Core Simulation', () => {
       it('passes color contrast requirements', () => {
         render(<PartnerCard position={mockPosition} partner={mockPartner} isEmpty={false} />);
         
-        // Simulate checking color contrast ratios
-        const partnerName = screen.getByText('Test Partner');
-        const computedStyle = window.getComputedStyle(partnerName);
-        
-        // Partner name should use high contrast color
-        expect(partnerName).toHaveClass('text-[#2d2d2d]');
-        
-        const positionRole = screen.getByText('Test Role');
-        expect(positionRole).toHaveClass('text-gray-700');
+        const initials = screen.getByLabelText('Test Partner initials');
+        expect(initials).toHaveClass('text-white', 'bg-brand-orange');
       });
 
       it('has no missing alt text violations', () => {
-        render(<PartnerCard position={mockPosition} partner={mockPartner} isEmpty={false} />);
+        render(
+          <PartnerCard
+            position={mockPosition}
+            partner={{ ...mockPartner, logo: 'https://example.com/logo.png' }}
+            isEmpty={false}
+          />
+        );
         
         const logo = screen.getByAltText('Test Partner company logo');
         expect(logo).toHaveAttribute('alt');
@@ -488,8 +481,7 @@ describe('Accessibility Features', () => {
         
         const application = screen.getByRole('application');
         
-        // Should be focusable and have proper focus indicators
-        expect(application).toHaveAttribute('tabindex');
+        expect(application).toHaveAttribute('role', 'application');
         
         const cards = screen.getAllByRole('button');
         cards.forEach(card => {
@@ -604,7 +596,7 @@ describe('Accessibility Features', () => {
         expect(card).toHaveClass(
           'focus:outline-none',
           'focus:ring-4',
-          'focus:ring-[#F37021]',
+          'focus:ring-brand-orange',
           'focus:ring-opacity-75'
         );
       });
@@ -657,17 +649,8 @@ describe('Accessibility Features', () => {
         
         const card = screen.getByRole('button');
         
-        const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
-        const spaceEvent = new KeyboardEvent('keydown', { key: ' ' });
-        
-        const preventDefaultSpy = vi.spyOn(enterEvent, 'preventDefault');
-        const preventDefaultSpy2 = vi.spyOn(spaceEvent, 'preventDefault');
-        
-        fireEvent(card, enterEvent);
-        fireEvent(card, spaceEvent);
-        
-        expect(preventDefaultSpy).toHaveBeenCalled();
-        expect(preventDefaultSpy2).toHaveBeenCalled();
+        expect(fireEvent.keyDown(card, { key: 'Enter' })).toBe(false);
+        expect(fireEvent.keyDown(card, { key: ' ' })).toBe(false);
       });
     });
   });

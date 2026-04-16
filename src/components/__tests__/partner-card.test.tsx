@@ -66,8 +66,8 @@ describe('PartnerCard Component', () => {
     it('displays partner name', () => {
       render(<PartnerCard position={mockPosition} partner={mockPartner} isEmpty={false} />);
       
-      const partnerName = screen.getByText('Test Partner');
-      expect(partnerName).toBeInTheDocument();
+      const card = screen.getByRole('button');
+      expect(card).toHaveAccessibleName(/Test Partner/);
     });
 
     it('displays partner logo when provided', () => {
@@ -90,8 +90,8 @@ describe('PartnerCard Component', () => {
     it('displays position role', () => {
       render(<PartnerCard position={mockPosition} partner={mockPartner} isEmpty={false} />);
       
-      const roleText = screen.getByText('Test Role');
-      expect(roleText).toBeInTheDocument();
+      const card = screen.getByRole('button');
+      expect(card).toHaveAccessibleName(/Test Role/);
     });
   });
 
@@ -121,11 +121,8 @@ describe('PartnerCard Component', () => {
     it('applies responsive text sizing for filled state', () => {
       render(<PartnerCard position={mockPosition} partner={mockPartner} isEmpty={false} />);
       
-      const partnerName = screen.getByText('Test Partner');
-      expect(partnerName).toHaveClass('text-[10px]', 'sm:text-xs', 'md:text-xs');
-      
-      const roleText = screen.getByText('Test Role');
-      expect(roleText).toHaveClass('text-[8px]', 'sm:text-[10px]', 'md:text-[10px]');
+      const logo = screen.getByAltText('Test Partner company logo');
+      expect(logo).toHaveClass('max-w-full', 'max-h-full', 'object-contain');
     });
   });
 
@@ -256,7 +253,7 @@ describe('PartnerCard Component', () => {
       render(<PartnerCard position={mockPosition} partner={mockPartner} />);
       
       const card = screen.getByRole('button');
-      expect(card).toHaveClass('focus:ring-4', 'focus:ring-[#F37021]');
+      expect(card).toHaveClass('focus:ring-4', 'focus:ring-brand-orange');
     });
   });
 
@@ -267,7 +264,7 @@ describe('PartnerCard Component', () => {
       const card = screen.getByRole('button');
       expect(card).toHaveClass(
         'hover:scale-105',
-        'hover:border-[#F37021]',
+        'hover:border-brand-orange',
         'hover:shadow-lg'
       );
     });
@@ -276,7 +273,7 @@ describe('PartnerCard Component', () => {
       render(<PartnerCard position={mockPosition} partner={mockPartner} />);
       
       const card = screen.getByRole('button');
-      expect(card).toHaveClass('active:scale-95', 'active:border-[#F37021]');
+      expect(card).toHaveClass('active:scale-95', 'active:border-brand-orange');
     });
 
     it('has gradient overlay', () => {
@@ -297,10 +294,10 @@ describe('PartnerCard Component', () => {
     });
 
     it('handles partner without name gracefully', () => {
-      const partnerWithoutName = { ...mockPartner, name: '' };
+      const partnerWithoutName = { ...mockPartner, name: '', logo: undefined };
       render(<PartnerCard position={mockPosition} partner={partnerWithoutName} isEmpty={false} />);
       
-      const initials = screen.getByLabelText(' initials');
+      const initials = screen.getByText('?');
       expect(initials).toHaveTextContent('?');
     });
 

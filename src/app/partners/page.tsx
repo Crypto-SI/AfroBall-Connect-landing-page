@@ -1,9 +1,10 @@
 "use client";
 
+import React from 'react';
 import { PitchLayout } from '@/components/pitch-layout';
 import { PartnerInformation } from '@/components/partner-information';
 import { DEFAULT_FORMATION, Partner, Position } from '@/types/formations';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 
 // Define Carl Anthony as a striker partner
 const carlAnthonyPartner: Partner = {
@@ -27,11 +28,6 @@ const pokuKessePartner: Partner = {
 export default function PartnersPage(): React.JSX.Element {
   const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
   const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const handlePartnerSelect = useCallback((partner: Partner | null, positionId: string) => {
     setSelectedPartner(partner);
@@ -43,7 +39,7 @@ export default function PartnersPage(): React.JSX.Element {
     // Removed automatic website opening - website link is now only available in the description area
   }, []);
 
-  const handlePartnerHover = useCallback((partner: Partner | null) => {
+  const handlePartnerHover = useCallback(() => {
     // Could be used for showing partner details in a tooltip or sidebar
     // For now, we'll just handle the basic hover state
   }, []);
@@ -52,14 +48,14 @@ export default function PartnersPage(): React.JSX.Element {
       {/* Skip to main content link for accessibility */}
       <a 
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#F37021] focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-brand-orange focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
       >
         Skip to main content
       </a>
 
       {/* Hero Section */}
       <section 
-        className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 text-[#F2EDE4]"
+        className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 text-brand-cream"
         aria-labelledby="hero-title"
       >
         {/* Background Image */}
@@ -74,7 +70,7 @@ export default function PartnersPage(): React.JSX.Element {
           aria-label="African football stadium background"
         >
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-[#363636]/80"></div>
+          <div className="absolute inset-0 bg-brand-charcoal/80"></div>
         </div>
         
         {/* Content */}
@@ -83,13 +79,13 @@ export default function PartnersPage(): React.JSX.Element {
             <div className="space-y-2">
               <h1 
                 id="hero-title"
-                className="font-heading text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl/none text-[#F37021]"
+                className="font-heading text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl/none text-brand-orange"
               >
                 Our Partners
               </h1>
-              <p className="max-w-[800px] mx-auto text-[#F2EDE4] text-base md:text-lg lg:text-xl">
+              <p className="max-w-[800px] mx-auto text-brand-cream text-base md:text-lg lg:text-xl">
                 Meet the strategic partners who help us bring African football to the world. 
-                Together, we're building the ultimate destination for African football fans everywhere.
+                Together, we&apos;re building the ultimate destination for African football fans everywhere.
               </p>
             </div>
           </div>
@@ -99,7 +95,7 @@ export default function PartnersPage(): React.JSX.Element {
       {/* Partners Pitch Layout Section */}
       <main 
         id="main-content"
-        className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]"
+        className="w-full py-8 md:py-16 lg:py-24 bg-brand-cream text-brand-charcoal"
       >
         <div className="container mx-auto px-4 md:px-6">
           {/* Two-column layout for desktop, stacked for mobile */}
@@ -107,16 +103,16 @@ export default function PartnersPage(): React.JSX.Element {
             {/* Left column: Title, subtitle, and partner information */}
             <div className="lg:w-1/3 flex flex-col">
               <div className="space-y-4 mb-6 lg:mb-8">
-                <div className="inline-block rounded-lg bg-[#363636] px-3 py-1 text-sm text-[#F2EDE4]">
+                <div className="inline-block rounded-lg bg-brand-charcoal px-3 py-1 text-sm text-brand-cream">
                   Partnership Formation
                 </div>
                 <h2
                   id="formation-title"
-                  className="font-heading text-2xl md:text-3xl font-bold tracking-tighter text-[#F37021]"
+                  className="font-heading text-2xl md:text-3xl font-bold tracking-tighter text-brand-orange"
                 >
                   Our Team Formation
                 </h2>
-                <p className="text-[#4A4A4A] text-sm md:text-base lg:text-lg/relaxed">
+                <p className="text-brand-dark-grey text-sm md:text-base lg:text-lg/relaxed">
                   Like a championship team, our partners are strategically positioned to deliver the best African football experience.
                   Click on any position to learn more about the partnership opportunities.
                 </p>
@@ -146,40 +142,40 @@ export default function PartnersPage(): React.JSX.Element {
       </main>
 
       {/* Partnership Benefits Section */}
-      <section className="w-full py-8 md:py-16 lg:py-24 bg-[#363636] text-[#F2EDE4]">
+      <section className="w-full py-8 md:py-16 lg:py-24 bg-brand-charcoal text-brand-cream">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-8 md:mb-10 w-full">
             <div className="space-y-3 mx-auto max-w-3xl">
-              <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl text-[#F37021]">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl text-brand-orange">
                 Why Partner With Us?
               </h2>
-              <p className="text-[#F2EDE4] text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
+              <p className="text-brand-cream text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
                 Join a growing ecosystem that connects African football with global audiences.
               </p>
             </div>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div className="text-center p-6 rounded-lg bg-[#F2EDE4]/10 hover:bg-[#F2EDE4]/20 transition-colors">
+            <div className="text-center p-6 rounded-lg bg-brand-cream/10 hover:bg-brand-cream/20 transition-colors">
               <div className="text-4xl mb-4">🌍</div>
-              <h3 className="text-xl font-bold font-heading text-[#F2EDE4] mb-3">Global Reach</h3>
-              <p className="text-sm text-[#F2EDE4]/80">
+              <h3 className="text-xl font-bold font-heading text-brand-cream mb-3">Global Reach</h3>
+              <p className="text-sm text-brand-cream/80">
                 Access to millions of African football fans worldwide through our streaming platform.
               </p>
             </div>
             
-            <div className="text-center p-6 rounded-lg bg-[#F2EDE4]/10 hover:bg-[#F2EDE4]/20 transition-colors">
+            <div className="text-center p-6 rounded-lg bg-brand-cream/10 hover:bg-brand-cream/20 transition-colors">
               <div className="text-4xl mb-4">📈</div>
-              <h3 className="text-xl font-bold font-heading text-[#F2EDE4] mb-3">Growing Market</h3>
-              <p className="text-sm text-[#F2EDE4]/80">
+              <h3 className="text-xl font-bold font-heading text-brand-cream mb-3">Growing Market</h3>
+              <p className="text-sm text-brand-cream/80">
                 Be part of the fastest-growing sports streaming market with authentic African content.
               </p>
             </div>
             
-            <div className="text-center p-6 rounded-lg bg-[#F2EDE4]/10 hover:bg-[#F2EDE4]/20 transition-colors">
+            <div className="text-center p-6 rounded-lg bg-brand-cream/10 hover:bg-brand-cream/20 transition-colors">
               <div className="text-4xl mb-4">🤝</div>
-              <h3 className="text-xl font-bold font-heading text-[#F2EDE4] mb-3">Strategic Collaboration</h3>
-              <p className="text-sm text-[#F2EDE4]/80">
+              <h3 className="text-xl font-bold font-heading text-brand-cream mb-3">Strategic Collaboration</h3>
+              <p className="text-sm text-brand-cream/80">
                 Work directly with our team to create meaningful partnerships that drive results.
               </p>
             </div>
@@ -188,28 +184,28 @@ export default function PartnersPage(): React.JSX.Element {
       </section>
 
       {/* Call-to-Action Section */}
-      <section className="w-full py-8 md:py-16 lg:py-24 bg-[#F2EDE4] text-[#363636]">
+      <section className="w-full py-8 md:py-16 lg:py-24 bg-brand-cream text-brand-charcoal">
         <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
           <div className="text-center mb-8 md:mb-10 w-full max-w-4xl">
             <div className="space-y-3 mx-auto">
-              <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl text-[#F37021]">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl text-brand-orange">
                 Ready to Join Our Team?
               </h2>
-              <p className="text-[#363636] text-base md:text-lg lg:text-xl">
+              <p className="text-brand-charcoal text-base md:text-lg lg:text-xl">
                 Become a strategic partner and help us revolutionize African football streaming.
               </p>
               <div className="mt-8 space-y-4">
                 <a 
                   href="mailto:partnerships@afroballconnect.com" 
-                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#F37021] text-[#F2EDE4] hover:bg-[#F37021]/90 h-11 px-8"
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-brand-orange text-brand-cream hover:bg-brand-orange/90 h-11 px-8"
                 >
                   Contact Partnership Team
                 </a>
-                <p className="text-sm text-[#363636]/80">
+                <p className="text-sm text-brand-charcoal/80">
                   For partnership opportunities, email us at{" "}
                   <a 
                     href="mailto:partnerships@afroballconnect.com" 
-                    className="text-[#F37021] hover:underline"
+                    className="text-brand-orange hover:underline"
                   >
                     partnerships@afroballconnect.com
                   </a>

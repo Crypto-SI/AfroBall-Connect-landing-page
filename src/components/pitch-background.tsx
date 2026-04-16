@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface PitchBackgroundProps {
   className?: string;
@@ -7,10 +8,15 @@ interface PitchBackgroundProps {
 export const PitchBackground: React.FC<PitchBackgroundProps> = ({ className = '' }) => {
   return (
     <div className={`relative w-full h-[110%] overflow-hidden ${className}`}>
-      <img
+      <Image
         src="/partnerpitch.png"
         alt="Football pitch background with field markings including center circle, penalty areas, goal areas, and corner arcs"
         className="w-full h-auto object-cover"
+        width={1200}
+        height={1600}
+        sizes="100vw"
+        priority
+        unoptimized
         style={{
           position: 'absolute',
           bottom: 0,

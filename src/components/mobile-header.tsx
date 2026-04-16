@@ -63,7 +63,7 @@ export default function MobileHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#4A4A4A]/40 bg-[#363636]/95 backdrop-blur supports-[backdrop-filter]:bg-[#363636]/60">
+    <header className="sticky top-0 z-50 w-full border-b border-brand-dark-grey/40 bg-brand-charcoal/95 backdrop-blur supports-[backdrop-filter]:bg-brand-charcoal/60">
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         {/* Logo - always visible */}
         <Link href="/" className="flex items-center space-x-2">
@@ -74,44 +74,44 @@ export default function MobileHeader() {
             height={40}
             className="h-10 w-auto"
           />
-          <span className="hidden sm:inline-block font-bold font-heading text-[#F2EDE4]">AFROBALL CONNECT</span>
+          <span className="hidden sm:inline-block font-bold font-heading text-brand-cream">AFROBALL CONNECT</span>
         </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <button
             onClick={() => scrollToSection('features')}
-            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+            className="transition-colors hover:text-brand-cream/80 text-brand-cream/60"
           >
             Features
           </button>
           <Link
             href="/club-websites"
-            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+            className="transition-colors hover:text-brand-cream/80 text-brand-cream/60"
           >
             Club Websites
           </Link>
           <Link
             href="/touchline-creators"
-            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+            className="transition-colors hover:text-brand-cream/80 text-brand-cream/60"
           >
             Touchline Creators
           </Link>
           <Link
             href="/partners"
-            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+            className="transition-colors hover:text-brand-cream/80 text-brand-cream/60"
           >
             Partners
           </Link>
           <button
             onClick={() => scrollToSection('afroball-connect-payment-tiers')}
-            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+            className="transition-colors hover:text-brand-cream/80 text-brand-cream/60"
           >
             Prices
           </button>
           <button
             onClick={() => scrollToSection('newsletter')}
-            className="transition-colors hover:text-[#F2EDE4]/80 text-[#F2EDE4]/60"
+            className="transition-colors hover:text-brand-cream/80 text-brand-cream/60"
           >
             Updates
           </button>
@@ -119,7 +119,7 @@ export default function MobileHeader() {
         
         {/* Mobile Menu Button */}
         <button
-          className="flex md:hidden items-center p-2 text-sm leading-5 text-[#F2EDE4] hover:text-[#F37021] focus:outline-none focus:text-[#F37021]"
+          className="flex md:hidden items-center p-2 text-sm leading-5 text-brand-cream hover:text-brand-orange focus:outline-none focus:text-brand-orange"
           type="button"
           aria-label="Toggle mobile menu"
           onClick={toggleMobileMenu}
@@ -132,33 +132,33 @@ export default function MobileHeader() {
       
       {/* Mobile Menu */}
       <div className={`${mobileMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-[#4A4A4A]/40 bg-[#363636]">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-brand-dark-grey/40 bg-brand-charcoal">
           <button
             onClick={() => {
               scrollToSection('features');
               closeMobileMenu();
             }}
-            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-brand-cream/80 hover:text-brand-cream hover:bg-brand-dark-grey/20"
           >
             Features
           </button>
           <Link
             href="/club-websites"
-            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-brand-cream/80 hover:text-brand-cream hover:bg-brand-dark-grey/20"
             onClick={closeMobileMenu}
           >
             Club Websites
           </Link>
           <Link
             href="/touchline-creators"
-            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-brand-cream/80 hover:text-brand-cream hover:bg-brand-dark-grey/20"
             onClick={closeMobileMenu}
           >
             Touchline Creators
           </Link>
           <Link
             href="/partners"
-            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-brand-cream/80 hover:text-brand-cream hover:bg-brand-dark-grey/20"
             onClick={closeMobileMenu}
           >
             Partners
@@ -168,7 +168,7 @@ export default function MobileHeader() {
               scrollToSection('afroball-connect-payment-tiers');
               closeMobileMenu();
             }}
-            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-brand-cream/80 hover:text-brand-cream hover:bg-brand-dark-grey/20"
           >
             Prices
           </button>
@@ -177,7 +177,7 @@ export default function MobileHeader() {
               scrollToSection('newsletter');
               closeMobileMenu();
             }}
-            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#F2EDE4]/80 hover:text-[#F2EDE4] hover:bg-[#4A4A4A]/20"
+            className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-brand-cream/80 hover:text-brand-cream hover:bg-brand-dark-grey/20"
           >
             Updates
           </button>

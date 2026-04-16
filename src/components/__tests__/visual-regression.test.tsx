@@ -41,51 +41,38 @@ describe('Visual Regression Tests', () => {
   };
 
   describe('PitchBackground Visual Consistency', () => {
-    it('renders consistent SVG structure', () => {
+    it('renders consistent image structure', () => {
       const { container } = render(<PitchBackground />);
       
-      // Check SVG dimensions and viewBox
-      const svg = container.querySelector('svg');
-      expect(svg).toHaveAttribute('viewBox', '0 0 800 450');
-      expect(svg).toHaveAttribute('preserveAspectRatio', 'xMidYMid meet');
-      
-      // Check field elements are present
-      expect(container.querySelector('rect[width="800"][height="450"]')).toBeInTheDocument(); // Main field
-      expect(container.querySelector('circle[cx="400"][cy="225"][r="60"]')).toBeInTheDocument(); // Center circle
-      expect(container.querySelector('line[x1="400"][y1="20"][x2="400"][y2="430"]')).toBeInTheDocument(); // Center line
+      const wrapper = container.firstChild as HTMLElement;
+      const image = container.querySelector('img');
+
+      expect(wrapper).toHaveClass('relative', 'w-full', 'h-[110%]', 'overflow-hidden');
+      expect(image).toHaveAttribute('src', '/partnerpitch.png');
+      expect(image).toHaveClass('w-full', 'h-auto', 'object-cover');
     });
 
-    it('maintains consistent field markings', () => {
+    it('maintains consistent accessible field description', () => {
       const { container } = render(<PitchBackground />);
       
-      // Check penalty areas
-      const leftPenaltyArea = container.querySelector('rect[x="20"][y="135"][width="110"][height="180"]');
-      const rightPenaltyArea = container.querySelector('rect[x="670"][y="135"][width="110"][height="180"]');
-      
-      expect(leftPenaltyArea).toBeInTheDocument();
-      expect(rightPenaltyArea).toBeInTheDocument();
-      
-      // Check goal areas
-      const leftGoalArea = container.querySelector('rect[x="20"][y="180"][width="40"][height="90"]');
-      const rightGoalArea = container.querySelector('rect[x="740"][y="180"][width="40"][height="90"]');
-      
-      expect(leftGoalArea).toBeInTheDocument();
-      expect(rightGoalArea).toBeInTheDocument();
+      const image = container.querySelector('img');
+      const description = container.querySelector('#pitch-description');
+
+      expect(image).toHaveAttribute('aria-describedby', 'pitch-description');
+      expect(description).toHaveTextContent(/center circle, penalty areas/);
     });
 
     it('applies consistent styling', () => {
       const { container } = render(<PitchBackground />);
       
-      // Check gradient definition
-      const gradient = container.querySelector('#fieldGradient');
-      expect(gradient).toBeInTheDocument();
-      
-      // Check stroke colors and widths
-      const whiteStrokes = container.querySelectorAll('[stroke="#FFFFFF"]');
-      expect(whiteStrokes.length).toBeGreaterThan(0);
-      
-      const strokeWidth2 = container.querySelectorAll('[stroke-width="2"]');
-      expect(strokeWidth2.length).toBeGreaterThan(0);
+      const image = container.querySelector('img');
+
+      expect(image).toHaveStyle({
+        position: 'absolute',
+        bottom: '0px',
+        height: '200%',
+        width: '100%',
+      });
     });
   });
 
@@ -143,9 +130,9 @@ describe('Visual Regression Tests', () => {
       const card = container.querySelector('.partner-card');
       expect(card).toHaveClass(
         'hover:scale-105',
-        'hover:border-[#F37021]',
+        'hover:border-brand-orange',
         'focus:ring-4',
-        'focus:ring-[#F37021]'
+        'focus:ring-brand-orange'
       );
     });
   });
@@ -295,9 +282,9 @@ describe('Visual Regression Tests', () => {
       const { container: container1 } = render(<PitchBackground />);
       const { container: container2 } = render(<PitchBackground className="w-96" />);
       
-      // Both should have the same aspect ratio class
-      const aspectVideo1 = container1.querySelector('.aspect-video');
-      const aspectVideo2 = container2.querySelector('.aspect-video');
+      // Both should have the same stable pitch-height class
+      const aspectVideo1 = container1.querySelector('.h-\\[110\\%\\]');
+      const aspectVideo2 = container2.querySelector('.h-\\[110\\%\\]');
       
       expect(aspectVideo1).toBeInTheDocument();
       expect(aspectVideo2).toBeInTheDocument();
@@ -340,40 +327,29 @@ describe('Visual Regression Tests', () => {
       const { container } = render(<PitchLayout formation={DEFAULT_FORMATION} partners={mockPartners} />);
       
       // Check orange brand color usage in hover states
-      const hoverElements = container.querySelectorAll('.hover\\:border-\\[\\#F37021\\]');
+      const hoverElements = container.querySelectorAll('.hover\\:border-brand-orange');
       expect(hoverElements.length).toBeGreaterThan(0);
       
       // Check focus ring color
-      const focusRings = container.querySelectorAll('.focus\\:ring-\\[\\#F37021\\]');
+      const focusRings = container.querySelectorAll('.focus\\:ring-brand-orange');
       expect(focusRings.length).toBeGreaterThan(0);
     });
 
     it('maintains consistent field colors', () => {
       const { container } = render(<PitchBackground />);
       
-      // Check gradient colors
-      const gradientStops = container.querySelectorAll('stop');
-      expect(gradientStops[0]).toHaveAttribute('stop-color', '#2D5A27');
-      expect(gradientStops[1]).toHaveAttribute('stop-color', '#245A1F');
-      
-      // Check white line colors
-      const whiteStrokes = container.querySelectorAll('[stroke="#FFFFFF"]');
-      expect(whiteStrokes.length).toBeGreaterThan(0);
+      const image = container.querySelector('img');
+      expect(image).toHaveAttribute('src', '/partnerpitch.png');
     });
 
     it('applies consistent text colors', () => {
       const mockPosition = { id: 'test', x: 50, y: 50, role: 'Test' };
       const { container } = render(
-        <PartnerCard position={mockPosition} partner={mockPartners[0]} isEmpty={false} />
+        <PartnerCard position={mockPosition} partner={mockPartners[1]} isEmpty={false} />
       );
       
-      // Check partner name color
-      const partnerName = container.querySelector('.text-\\[\\#2d2d2d\\]');
-      expect(partnerName).toBeInTheDocument();
-      
-      // Check role text color
-      const roleText = container.querySelector('.text-gray-700');
-      expect(roleText).toBeInTheDocument();
+      const initials = container.querySelector('[aria-label="Test Partner 2 initials"]');
+      expect(initials).toBeInTheDocument();
     });
   });
 

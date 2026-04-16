@@ -37,6 +37,14 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-brand-orange: #f37021;
+  --color-brand-charcoal: #363636;
+  --color-brand-cream: #f2ede4;
+  --color-brand-green: #00a859;
+  --color-brand-yellow: #ffc82e;
+  --color-brand-light-grey: #cccccc;
+  --color-brand-medium-grey: #999999;
+  --color-brand-dark-grey: #4a4a4a;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -46,34 +54,34 @@
 :root {
   --radius: 0.5rem;
   
-  /* Recalculated HSL values for Vibrant Orange #F37021 */
+  /* Recalculated HSL values for Vibrant Orange brand-orange */
   --primary: 22 90% 54%;
   
-  --background: 222 0% 21%; /* Dark Charcoal #363636 */
-  --foreground: 39 33% 96%; /* Cream / Off-White #F2EDE4 */
-  --card: 39 33% 96%; /* Cream / Off-White #F2EDE4 for card background */
-  --card-foreground: 222 0% 21%; /* Dark Charcoal #363636 for card text */
-  --popover: 222 0% 21%; /* Dark Charcoal #363636 */
-  --popover-foreground: 39 33% 96%; /* Cream / Off-White #F2EDE4 */
-  --primary-foreground: 39 33% 96%; /* Cream / Off-White #F2EDE4 for text on primary */
+  --background: 222 0% 21%; /* Dark Charcoal brand-charcoal */
+  --foreground: 39 33% 96%; /* Cream / Off-White brand-cream */
+  --card: 39 33% 96%; /* Cream / Off-White brand-cream for card background */
+  --card-foreground: 222 0% 21%; /* Dark Charcoal brand-charcoal for card text */
+  --popover: 222 0% 21%; /* Dark Charcoal brand-charcoal */
+  --popover-foreground: 39 33% 96%; /* Cream / Off-White brand-cream */
+  --primary-foreground: 39 33% 96%; /* Cream / Off-White brand-cream for text on primary */
   --secondary: 39 33% 92%; /* Lighter cream or a light grey for secondary elements */
   --secondary-foreground: 222 0% 21%; /* Dark Charcoal for text on secondary */
-  --muted: 220 0% 60%; /* Medium Grey #999999 */
+  --muted: 220 0% 60%; /* Medium Grey brand-medium-grey */
   --muted-foreground: 222 0% 30%; /* Darker grey for text on muted */
-  --accent: 22 90% 54%; /* Vibrant Orange #F37021 - Aligned with primary */
+  --accent: 22 90% 54%; /* Vibrant Orange brand-orange - Aligned with primary */
   --accent-foreground: 222 0% 21%; /* Dark Charcoal */
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-  --border: 222 0% 29%; /* Darker Grey #4A4A4A */
-  --input: 222 0% 29%; /* Darker Grey #4A4A4A */
-  --ring: 22 90% 54%; /* Vibrant Orange #F37021 for focus rings */
+  --border: 222 0% 29%; /* Darker Grey brand-dark-grey */
+  --input: 222 0% 29%; /* Darker Grey brand-dark-grey */
+  --ring: 22 90% 54%; /* Vibrant Orange brand-orange for focus rings */
   
   /* Chart colors */
   --chart-1: 22 90% 54%; /* Using Vibrant Orange as first chart color */
   --chart-2: 150 100% 33%; /* Green - #00A859 */
   --chart-3: 45 100% 59%; /* Yellow - #FFC82E */
   --chart-4: 220 0% 80%; /* Light Grey - #CCCCCC */
-  --chart-5: 220 0% 60%; /* Medium Grey - #999999 */
+  --chart-5: 220 0% 60%; /* Medium Grey - brand-medium-grey */
   
   /* Sidebar colors */
   --sidebar: 39 33% 96%; /* Cream */
@@ -87,19 +95,19 @@
 }
 
 .dark {
-  --background: 222 0% 21%; /* Dark Charcoal #363636 */
-  --foreground: 39 33% 96%; /* Cream / Off-White #F2EDE4 */
-  --card: 39 33% 96%;  /* Cream / Off-White #F2EDE4 */
-  --card-foreground: 222 0% 21%; /* Dark Charcoal #363636 */
+  --background: 222 0% 21%; /* Dark Charcoal brand-charcoal */
+  --foreground: 39 33% 96%; /* Cream / Off-White brand-cream */
+  --card: 39 33% 96%;  /* Cream / Off-White brand-cream */
+  --card-foreground: 222 0% 21%; /* Dark Charcoal brand-charcoal */
   --popover: 222 0% 21%;
   --popover-foreground: 39 33% 96%;
-  --primary: 22 90% 54%; /* Vibrant Orange #F37021 */
-  --primary-foreground: 39 33% 96%; /* Cream / Off-White #F2EDE4 */
+  --primary: 22 90% 54%; /* Vibrant Orange brand-orange */
+  --primary-foreground: 39 33% 96%; /* Cream / Off-White brand-cream */
   --secondary: 39 33% 92%;
   --secondary-foreground: 222 0% 21%;
   --muted: 220 0% 60%;
   --muted-foreground: 222 0% 30%;
-  --accent: 22 90% 54%; /* Vibrant Orange #F37021 - Aligned with primary */
+  --accent: 22 90% 54%; /* Vibrant Orange brand-orange - Aligned with primary */
   --accent-foreground: 222 0% 21%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
@@ -112,7 +120,7 @@
   --chart-2: 150 100% 33%; /* Green - #00A859 */
   --chart-3: 45 100% 59%; /* Yellow - #FFC82E */
   --chart-4: 220 0% 80%; /* Light Grey - #CCCCCC */
-  --chart-5: 220 0% 60%; /* Medium Grey - #999999 */
+  --chart-5: 220 0% 60%; /* Medium Grey - brand-medium-grey */
   
   /* Sidebar colors */
   --sidebar: 222 0% 21%; /* Charcoal */

@@ -53,17 +53,17 @@ export default function IntroAnimation({ showOnLoad = true }: { showOnLoad?: boo
   });
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-[#363636] transition-opacity duration-500 ${isAnimating ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-brand-charcoal transition-opacity duration-500 ${isAnimating ? 'opacity-100' : 'opacity-0'}`}>
       <div className="relative w-full h-full flex items-center justify-center">
         {/* Animated Background Pattern */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className={`absolute inset-0 bg-gradient-to-br from-[#F37021]/20 via-[#363636] to-[#F37021]/20 animate-pulse`}></div>
+          <div className={`absolute inset-0 bg-gradient-to-br from-brand-orange/20 via-brand-charcoal to-brand-orange/20 animate-pulse`}></div>
           
           {/* Floating particles */}
           {particles.map((particle) => (
             <div
               key={particle.id}
-              className="absolute w-2 h-2 bg-[#F37021]/40 rounded-full animate-float"
+              className="absolute w-2 h-2 bg-brand-orange/40 rounded-full animate-float"
               style={{
                 left: `${particle.left.toFixed(5)}%`,
                 top: `${particle.top.toFixed(5)}%`,
@@ -78,9 +78,9 @@ export default function IntroAnimation({ showOnLoad = true }: { showOnLoad?: boo
         <div className="relative z-10 text-center">
           {/* Animated Logo Ring */}
           <div className={`relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto mb-8 ${isAnimating ? 'animate-scale-in' : ''}`}>
-            <div className="absolute inset-0 border-4 border-[#F37021]/20 rounded-full animate-ping-slow"></div>
-            <div className="absolute inset-2 border-2 border-[#F37021]/30 rounded-full animate-ping-medium"></div>
-            <div className="absolute inset-4 border border-[#F37021]/40 rounded-full animate-ping-fast"></div>
+            <div className="absolute inset-0 border-4 border-brand-orange/20 rounded-full animate-ping-slow"></div>
+            <div className="absolute inset-2 border-2 border-brand-orange/30 rounded-full animate-ping-medium"></div>
+            <div className="absolute inset-4 border border-brand-orange/40 rounded-full animate-ping-fast"></div>
             
             <div className="absolute inset-4 flex items-center justify-center">
               <Image
@@ -96,28 +96,28 @@ export default function IntroAnimation({ showOnLoad = true }: { showOnLoad?: boo
 
           {/* Animated Brand Text */}
           <div className={`space-y-4 ${isAnimating ? 'animate-fade-in-up' : ''}`}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#F37021] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brand-orange tracking-tight">
               AfroBall
-              <span className="text-[#F2EDE4]">Connect</span>
+              <span className="text-brand-cream">Connect</span>
             </h1>
             
-            <p className="text-sm sm:text-base md:text-lg text-[#F2EDE4]/80 font-medium tracking-wide">
+            <p className="text-sm sm:text-base md:text-lg text-brand-cream/80 font-medium tracking-wide">
               The Ultimate Destination for African Football
             </p>
           </div>
 
           {/* Animated Loading Bar */}
-          <div className={`w-32 h-1 bg-[#F37021]/20 rounded-full mx-auto mt-8 overflow-hidden ${isAnimating ? 'animate-loading-bar' : ''}`}>
-            <div className="h-full bg-[#F37021] rounded-full animate-loading-fill"></div>
+          <div className={`w-32 h-1 bg-brand-orange/20 rounded-full mx-auto mt-8 overflow-hidden ${isAnimating ? 'animate-loading-bar' : ''}`}>
+            <div className="h-full bg-brand-orange rounded-full animate-loading-fill"></div>
           </div>
         </div>
 
         {/* Bottom Decorative Elements */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className={`flex items-center space-x-2 text-[#F2EDE4]/60 text-sm ${isAnimating ? 'animate-bounce' : ''}`}>
-            <div className="w-2 h-2 bg-[#F37021] rounded-full animate-pulse"></div>
+          <div className={`flex items-center space-x-2 text-brand-cream/60 text-sm ${isAnimating ? 'animate-bounce' : ''}`}>
+            <div className="w-2 h-2 bg-brand-orange rounded-full animate-pulse"></div>
             <span>Loading Experience...</span>
-            <div className="w-2 h-2 bg-[#F37021] rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-brand-orange rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>

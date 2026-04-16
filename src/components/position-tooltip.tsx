@@ -198,7 +198,7 @@ export const PositionTooltip: React.FC<PositionTooltipProps> = ({
       aria-describedby={`position-${position.id}-description`}
     >
       {/* Tooltip content */}
-      <div className="relative bg-[#1a1a1a] text-white rounded-lg shadow-2xl border border-[#F37021]/30 backdrop-blur-sm max-w-xs sm:max-w-sm">
+      <div className="relative bg-[#1a1a1a] text-white rounded-lg shadow-2xl border border-brand-orange/30 backdrop-blur-sm max-w-xs sm:max-w-sm">
         {/* Arrow */}
         <div
           className="absolute w-0 h-0"
@@ -207,7 +207,7 @@ export const PositionTooltip: React.FC<PositionTooltipProps> = ({
         
         {/* Content */}
         <div className="p-3 sm:p-4">
-          <h3 className="font-bold text-sm sm:text-base text-[#F37021] mb-2">
+          <h3 className="font-bold text-sm sm:text-base text-brand-orange mb-2">
             {position.role}
           </h3>
           <p 

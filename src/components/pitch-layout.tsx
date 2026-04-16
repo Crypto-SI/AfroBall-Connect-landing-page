@@ -95,7 +95,7 @@ export const PitchLayout: React.FC<PitchLayoutProps> = ({
         lastCard?.focus();
         break;
     }
-  }, [safeFormation?.positions, focusedPosition]);
+  }, [safeFormation, focusedPosition]);
 
   const handlePartnerFocus = React.useCallback((partner: Partner | null, positionId: string) => {
     setFocusedPosition(positionId);
@@ -109,7 +109,7 @@ export const PitchLayout: React.FC<PitchLayoutProps> = ({
         setAnnouncementText(`Focused on empty ${safeFormation.positions.find(p => p.id === positionId)?.role} position.`);
       }
     }
-  }, [onPartnerHover, safeFormation?.positions]);
+  }, [onPartnerHover, safeFormation]);
 
   const handlePartnerBlur = React.useCallback(() => {
     onPartnerHover?.(null);
@@ -215,7 +215,7 @@ export const PitchLayout: React.FC<PitchLayoutProps> = ({
       {/* Skip link for keyboard users */}
       <a 
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#F37021] focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-brand-orange focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
       >
         Skip to main content
       </a>
